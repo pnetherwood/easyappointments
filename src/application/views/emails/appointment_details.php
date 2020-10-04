@@ -49,10 +49,6 @@
                     <td class="label" style="padding: 3px;font-weight: bold;">Phone</td>
                     <td style="padding: 3px;">$customer_phone</td>
                 </tr>
-                <tr>
-                    <td class="label" style="padding: 3px;font-weight: bold;">Address</td>
-                    <td style="padding: 3px;">$customer_address</td>
-                </tr>
             </table>
 
             <h2>Appointment Link</h2>
@@ -61,9 +57,6 @@
 
         <div id="footer" style="padding: 10px; text-align: center; margin-top: 10px;
                 border-top: 1px solid #EEE; background: #FAFAFA;">
-            Powered by
-            <a href="http://easyappointments.org" style="text-decoration: none;">Easy!Appointments</a>
-            |
             <a href="$company_link" style="text-decoration: none;">$company_name</a>
         </div>
     </div>

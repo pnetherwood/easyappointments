@@ -24,6 +24,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
     // Constants
     var FILTER_TYPE_PROVIDER = 'provider';
     var FILTER_TYPE_SERVICE = 'service';
+    var FILTER_TYPE_ALL = 'all';
 
     // Variables
     var lastFocusedEventData; // Contains event data for later use.
@@ -1050,7 +1051,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
     }
 
 
-    exports.initialize = function () {
+    exports.initialize = function (view) {
         // Dynamic date formats.
         var columnFormat = {};
 
@@ -1086,6 +1087,11 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
         }
 
         var defaultView = window.innerWidth < 468 ? 'agendaDay' : 'agendaWeek';
+        var defaultButtons = 'agendaDay,agendaWeek,month';
+        if(view === 'list') {
+            defaultView = 'listWeek';
+            defaultButtons = 'listDay,listWeek,listMonth';
+        }
 
         // Initialize page calendar
         $('#calendar').fullCalendar({
@@ -1102,7 +1108,7 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
             header: {
                 left: 'prev,next today',
                 center: 'title',
-                right: 'agendaDay,agendaWeek,month'
+                right: defaultButtons
             },
 
             // Selectable
@@ -1182,6 +1188,9 @@ window.BackendCalendarDefaultView = window.BackendCalendarDefaultView || {};
 
         // Trigger once to set the proper footer position after calendar initialization.
         _calendarWindowResize();
+
+        // All providers option
+        $('#select-filter-item').append('<option value="All" type="' + FILTER_TYPE_ALL + '">All</option>');
 
         // Fill the select list boxes of the page.
         if (GlobalVariables.availableProviders.length > 0) {

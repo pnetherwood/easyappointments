@@ -145,7 +145,6 @@ class Email {
             '$customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
             '$customer_email' => $customer['email'],
             '$customer_phone' => $customer['phone_number'],
-            '$customer_address' => $customer['address'],
 
             // Translations
             'Appointment Details' => $this->framework->lang->line('appointment_details_title'),
@@ -157,7 +156,6 @@ class Email {
             'Name' => $this->framework->lang->line('name'),
             'Email' => $this->framework->lang->line('email'),
             'Phone' => $this->framework->lang->line('phone'),
-            'Address' => $this->framework->lang->line('address'),
             'Appointment Link' => $this->framework->lang->line('appointment_link_title')
         ];
 
@@ -252,9 +250,9 @@ class Email {
             '$reason' => $reason->get(),
 
             // Translations
-            'Appointment Details' => $this->framework->lang->line('appointment_details_title'),
-            'Service' => $this->framework->lang->line('service'),
-            'Provider' => $this->framework->lang->line('provider'),
+            'Booking Details' => $this->framework->lang->line('appointment_details_title'),
+            'Weapon' => $this->framework->lang->line('service'),
+            'Piste' => $this->framework->lang->line('provider'),
             'Date' => $this->framework->lang->line('start'),
             'Duration' => $this->framework->lang->line('duration'),
             'Customer Details' => $this->framework->lang->line('customer_details_title'),

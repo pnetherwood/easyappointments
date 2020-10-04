@@ -857,3 +857,10 @@ body .form-horizontal .controls {
         width: 48%;
     }
 }
+
+@media print {
+    #calendar-toolbar {
+      display: none !important;    }
+    #footer {
+      display: none !important;    }
+}

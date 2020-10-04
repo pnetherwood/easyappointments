@@ -263,7 +263,7 @@ class Secretaries_Model extends CI_Model {
 
         // Validate calendar view mode. 
         if (isset($secretary['settings']['calendar_view']) && ($secretary['settings']['calendar_view'] !== CALENDAR_VIEW_DEFAULT
-                && $secretary['settings']['calendar_view'] !== CALENDAR_VIEW_TABLE))
+                && $secretary['settings']['calendar_view'] !== CALENDAR_VIEW_TABLE && $secretary['settings']['calendar_view'] !== CALENDAR_VIEW_LIST))
         {
             throw new Exception('The calendar view setting must be either "' . CALENDAR_VIEW_DEFAULT
                 . '" or "' . CALENDAR_VIEW_TABLE . '", given: ' . $secretary['settings']['calendar_view']);

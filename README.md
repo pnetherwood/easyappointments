@@ -1,6 +1,14 @@
 Easy!Appointments
 ================
 
+### Differences to Easy!Appointments
+
+* Modified to single session fencing club
+* List View for Calendar option
+* Bug fixes
+* Print view for List Calendar
+* Simplified booking page
+
 <img src="http://easyappointments.org/img/easyappointments-banner.png">
 
 ### Organize your business! Exploit human resources that can be used in other tasks more efficiently.
@@ -75,5 +83,6 @@ bug reports.
 ### Translate Easy!Appointments
 
 As of version 1.0 Easy!Appointments supports translated user interface. If you want to contribute to the
-translation process read the [get involved](https://github.com/alextselegidis/easyappointments/blob/master/doc/get-involved.md)
+translation process read the [get involved](https://github.com/alextselegidis/easyappointments/wiki/Get-Involved!)
 page for additional information.
+

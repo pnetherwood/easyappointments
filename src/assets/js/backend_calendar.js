@@ -81,7 +81,7 @@ window.BackendCalendar = window.BackendCalendar || {};
         if (view === 'table') {
             BackendCalendarTableView.initialize();
         } else {
-            BackendCalendarDefaultView.initialize();
+            BackendCalendarDefaultView.initialize(view);
         }
 
         BackendCalendarGoogleSync.initialize();

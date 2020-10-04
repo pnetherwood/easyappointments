@@ -148,7 +148,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" style="display:none;">
                                 <label for="select-provider">
                                     <strong><?= lang('select_provider') ?></strong>
                                 </label>
@@ -158,6 +158,8 @@
 
                             <div id="service-description" style="display:none;"></div>
                         </div>
+                        <p></p>
+                        <p>If you have any problems with the booking form please <a href="http://www.kingstonfencing.co.uk/contact/index.php">contact us</a></p>
                     </div>
 
                     <div class="command-buttons">
@@ -175,7 +177,7 @@
                     <div class="frame-container">
 
                         <h3 class="frame-title"><?= lang('step_two_title') ?></h3>
-
+                        <p>If a date is not available it means that the session is full. Click back and try another session</p>
                         <div class="frame-content row">
                             <div class="col-xs-12 col-sm-6">
                                 <div id="select-date"></div>
@@ -229,22 +231,24 @@
                             </div>
 
                             <div class="col-xs-12 col-sm-6">
-                                <div class="form-group">
-                                    <label for="address" class="control-label"><?= lang('address') ?></label>
-                                    <input type="text" id="address" class="form-control" maxlength="120" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="city" class="control-label"><?= lang('city') ?></label>
-                                    <input type="text" id="city" class="form-control" maxlength="120" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="zip-code" class="control-label"><?= lang('zip_code') ?></label>
-                                    <input type="text" id="zip-code" class="form-control" maxlength="120" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="notes" class="control-label"><?= lang('notes') ?></label>
-                                    <textarea id="notes" maxlength="500" class="form-control" rows="3"></textarea>
-                                </div>
+                                <!--
+                                  <div class="form-group">
+                                      <label for="address" class="control-label"><?= lang('address') ?></label>
+                                      <input type="text" id="address" class="form-control" maxlength="120" />
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="city" class="control-label"><?= lang('city') ?></label>
+                                      <input type="text" id="city" class="form-control" maxlength="120" />
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="zip-code" class="control-label"><?= lang('zip_code') ?></label>
+                                      <input type="text" id="zip-code" class="form-control" maxlength="120" />
+                                  </div>
+                                !-->
+                                  <div class="form-group">
+                                      <label for="notes" class="control-label"><?= lang('notes') ?></label>
+                                      <textarea id="notes" maxlength="500" class="form-control" rows="3"></textarea>
+                                  </div>
                             </div>
 
                             <?php if ($display_terms_and_conditions): ?>
@@ -334,9 +338,6 @@
                 <!-- FRAME FOOTER -->
 
                 <div id="frame-footer">
-                    Powered By
-                    <a href="http://easyappointments.org" target="_blank">Easy!Appointments</a>
-                    |
                     <span id="select-language" class="label label-success">
     		        	<?= ucfirst($this->config->item('language')) ?>
     		        </span>

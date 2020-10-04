@@ -497,6 +497,7 @@
                         <select id="calendar-view" class="form-control required">
                             <option value="default">Default</option>
                             <option value="table">Table</option>
+                            <option value="list">List</option>
                         </select>
                     </div>
 

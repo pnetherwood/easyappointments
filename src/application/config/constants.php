@@ -83,6 +83,7 @@ define('ANY_PROVIDER', 'any-provider');
 
 define('CALENDAR_VIEW_DEFAULT', 'default');
 define('CALENDAR_VIEW_TABLE', 'table');
+define('CALENDAR_VIEW_LIST', 'list');
 
 define('AVAILABILITIES_TYPE_FLEXIBLE', 'flexible');
 define('AVAILABILITIES_TYPE_FIXED', 'fixed');

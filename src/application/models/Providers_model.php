@@ -300,7 +300,7 @@ class Providers_Model extends CI_Model {
 
         // Validate calendar view mode. 
         if (isset($provider['settings']['calendar_view']) && ($provider['settings']['calendar_view'] !== CALENDAR_VIEW_DEFAULT
-                && $provider['settings']['calendar_view'] !== CALENDAR_VIEW_TABLE))
+                && $provider['settings']['calendar_view'] !== CALENDAR_VIEW_TABLE && $provider['settings']['calendar_view'] !== CALENDAR_VIEW_LIST))
         {
             throw new Exception('The calendar view setting must be either "' . CALENDAR_VIEW_DEFAULT
                 . '" or "' . CALENDAR_VIEW_TABLE . '", given: ' . $provider['settings']['calendar_view']);

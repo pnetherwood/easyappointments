@@ -184,6 +184,7 @@
                                     <select id="provider-calendar-view" class="form-control required">
                                         <option value="default">Default</option>
                                         <option value="table">Table</option>
+                                        <option value="list">List</option>
                                     </select>
                                 </div>
 
@@ -472,6 +473,7 @@
                                 <select id="secretary-calendar-view" class="form-control required">
                                     <option value="default">Default</option>
                                     <option value="table">Table</option>
+                                    <option value="list">List</option>
                                 </select>
                             </div>
 
@@ -627,6 +629,7 @@
                                 <select id="admin-calendar-view" class="form-control required">
                                     <option value="default">Default</option>
                                     <option value="table">Table</option>
+                                    <option value="list">List</option>
                                 </select>
                             </div>
 
