@@ -67,23 +67,17 @@
             <?php if ($privileges[PRIV_APPOINTMENTS]['add'] == TRUE): ?>
                 <button id="insert-appointment" class="btn btn-default" title="<?= lang('new_appointment_hint') ?>">
                     <span class="glyphicon glyphicon-plus"></span>
-                    <?= lang('appointment') ?>
                 </button>
 
                 <button id="insert-unavailable" class="btn btn-default" title="<?= lang('unavailable_periods_hint') ?>">
-                    <span class="glyphicon glyphicon-plus"></span>
-                    <?= lang('unavailable') ?>
+                    <span class="glyphicon glyphicon-minus"></span>
                 </button>
             <?php endif ?>
 
             <button id="reload-appointments" class="btn btn-default" title="<?= lang('reload_appointments_hint') ?>">
                 <span class="glyphicon glyphicon-repeat"></span>
-                <?= lang('reload') ?>
             </button>
 
-            <button id="toggle-fullscreen" class="btn btn-default">
-                <span class="glyphicon glyphicon-fullscreen"></span>
-            </button>
         </div>
     </div>
 

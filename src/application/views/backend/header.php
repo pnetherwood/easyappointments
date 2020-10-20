@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/ext/jquery-ui/jquery-ui.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/ext/jquery-qtip/jquery.qtip.min.css') ?>">
     <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/ext/trumbowyg/ui/trumbowyg.min.css') ?>">
-    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/css/backend.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/css/backend.css') ?>?version=2">
     <link rel="stylesheet" type="text/css" href="<?= asset_url('assets/css/general.css') ?>">
 
     <script src="<?= asset_url('assets/ext/jquery/jquery.min.js') ?>"></script>

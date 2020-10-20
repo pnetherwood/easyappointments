@@ -189,25 +189,22 @@ class Backend_api extends CI_Controller {
             $this->load->model('services_model');
             $this->load->model('customers_model');
 
+            $where_id_clause = '';
             $record_id = $this->db->escape($_POST['record_id']);
             if ($this->input->post('filter_type') == FILTER_TYPE_PROVIDER)
             {
-                $where_id = 'id_users_provider'. ' = ' . $record_id . ' AND ';
+                $where_id_clause = 'id_users_provider'. ' = ' . $record_id . ' AND ';
             }
             else if ($this->input->post('filter_type') == FILTER_TYPE_SERVICE)
             {
-                $where_id = 'id_services'. ' = ' . $record_id . ' AND ';
-            }
-            else
-            {
-                $where_id = '';
+                $where_id_clause = 'id_services'. ' = ' . $record_id . ' AND ';
             }
 
             // Get appointments
             $start_date = $this->db->escape($_POST['start_date']);
             $end_date = $this->db->escape(date('Y-m-d', strtotime($_POST['end_date'] . ' +1 day')));
 
-            $where_clause = $where_id  . '
+            $where_clause = $where_id_clause  . '
                 ((start_datetime > ' . $start_date . ' AND start_datetime < ' . $end_date . ') 
                 or (end_datetime > ' . $start_date . ' AND end_datetime < ' . $end_date . ') 
                 or (start_datetime <= ' . $start_date . ' AND end_datetime >= ' . $end_date . ')) 
@@ -226,8 +223,8 @@ class Backend_api extends CI_Controller {
             // Get unavailable periods (only for provider).
             if ($this->input->post('filter_type') == FILTER_TYPE_PROVIDER)
             {
-                $where_clause = $where_id . ' = ' . $record_id . '
-                    AND ((start_datetime > ' . $start_date . ' AND start_datetime < ' . $end_date . ') 
+                $where_clause = $where_id_clause . '
+                    :((start_datetime > ' . $start_date . ' AND start_datetime < ' . $end_date . ') 
                     or (end_datetime > ' . $start_date . ' AND end_datetime < ' . $end_date . ') 
                     or (start_datetime <= ' . $start_date . ' AND end_datetime >= ' . $end_date . ')) 
                     AND is_unavailable = 1
