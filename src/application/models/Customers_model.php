@@ -79,6 +79,8 @@ class Customers_Model extends CI_Model {
             ->from('ea_users')
             ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
             ->where('ea_users.email', $customer['email'])
+            ->where('ea_users.first_name', $customer['first_name'])
+            ->where('ea_users.last_name', $customer['last_name'])
             ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
             ->get()->num_rows();
 
@@ -175,6 +177,8 @@ class Customers_Model extends CI_Model {
             ->from('ea_users')
             ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
             ->where('ea_users.email', $customer['email'])
+            ->where('ea_users.first_name', $customer['first_name'])
+            ->where('ea_users.last_name', $customer['last_name'])
             ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
             ->get();
 
@@ -213,6 +217,7 @@ class Customers_Model extends CI_Model {
         }
         // Validate required fields
         if ( ! isset($customer['last_name'])
+            || ! isset($customer['first_name'])
             || ! isset($customer['email'])
             || ! isset($customer['phone_number']))
         {
@@ -230,21 +235,21 @@ class Customers_Model extends CI_Model {
         // When inserting a record the email address must be unique.
         $customer_id = (isset($customer['id'])) ? $customer['id'] : '';
 
-        $num_rows = $this->db
-            ->select('*')
-            ->from('ea_users')
-            ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner')
-            ->where('ea_roles.slug', DB_SLUG_CUSTOMER)
-            ->where('ea_users.email', $customer['email'])
-            ->where('ea_users.id <>', $customer_id)
-            ->get()
-            ->num_rows();
+        /* $num_rows = $this->db */
+        /*     ->select('*') */
+        /*     ->from('ea_users') */
+        /*     ->join('ea_roles', 'ea_roles.id = ea_users.id_roles', 'inner') */
+        /*     ->where('ea_roles.slug', DB_SLUG_CUSTOMER) */
+        /*     ->where('ea_users.email', $customer['email']) */
+        /*     ->where('ea_users.id <>', $customer_id) */
+        /*     ->get() */
+        /*     ->num_rows(); */
 
-        if ($num_rows > 0)
-        {
-            throw new Exception('Given email address belongs to another customer record. '
-                . 'Please use a different email.');
-        }
+        /* if ($num_rows > 0) */
+        /* { */
+        /*     throw new Exception('Given email address belongs to another customer record. ' */
+        /*         . 'Please use a different email.'); */
+        /* } */
 
         return TRUE;
     }
