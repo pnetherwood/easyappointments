@@ -131,6 +131,21 @@ class Email {
                 throw new \Exception('Invalid time_format value: ' . $company['time_format']);
         }
 
+        $bank_details = '';
+        if ( $service['price'] > 0 )
+        {
+            $bank_details = '<h3>Bank Details</h3>
+            <table>
+                <tr>
+                    <td class="label" style="padding: 3px;font-weight: bold;">Account</td>
+                    <td style="padding: 3px;">' . $this->framework->lang->line('account_name') . '</td>
+                </tr>
+                <tr> <td class="label" style="padding: 3px;font-weight: bold;">Sort Code</td> <td style="padding: 3px;">' . $this->framework->lang->line('account_sortcode') . '</td> </tr> <tr> <td class="label" style="padding: 3px;font-weight: bold;">Account Number</td>
+                    <td style="padding: 3px;">' . $this->framework->lang->line('account_number') . '</td>
+                </tr>
+            </table><p>Please use your name for the reference.<p>';
+        }
+
         // Prepare template replace array.
         $replaceArray = [
             '$email_title' => $title->get(),
@@ -140,11 +155,13 @@ class Email {
             '$appointment_start_date' => date($date_format . ' ' . $timeFormat, strtotime($appointment['start_datetime'])),
             '$appointment_end_date' => date($date_format . ' ' . $timeFormat, strtotime($appointment['end_datetime'])),
             '$appointment_link' => $appointmentLink->get(),
+            '$appointment_price' => $service['price'],
             '$company_link' => $company['company_link'],
             '$company_name' => $company['company_name'],
             '$customer_name' => $customer['first_name'] . ' ' . $customer['last_name'],
             '$customer_email' => $customer['email'],
             '$customer_phone' => $customer['phone_number'],
+            '$bank_details' => $bank_details,
 
             // Translations
             'Appointment Details' => $this->framework->lang->line('appointment_details_title'),
@@ -158,6 +175,7 @@ class Email {
             'Phone' => $this->framework->lang->line('phone'),
             'Appointment Link' => $this->framework->lang->line('appointment_link_title')
         ];
+
 
         $html = file_get_contents(__DIR__ . '/../../application/views/emails/appointment_details.php');
         $html = $this->_replaceTemplateVariables($replaceArray, $html);

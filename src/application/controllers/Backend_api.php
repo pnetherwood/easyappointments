@@ -224,7 +224,7 @@ class Backend_api extends CI_Controller {
             if ($this->input->post('filter_type') == FILTER_TYPE_PROVIDER)
             {
                 $where_clause = $where_id_clause . '
-                    :((start_datetime > ' . $start_date . ' AND start_datetime < ' . $end_date . ') 
+                    ((start_datetime > ' . $start_date . ' AND start_datetime < ' . $end_date . ') 
                     or (end_datetime > ' . $start_date . ' AND end_datetime < ' . $end_date . ') 
                     or (start_datetime <= ' . $start_date . ' AND end_datetime >= ' . $end_date . ')) 
                     AND is_unavailable = 1

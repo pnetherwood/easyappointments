@@ -179,6 +179,11 @@ window.FrontendBookApi = window.FrontendBookApi || {};
                     return false;
                 }
 
+                if (response.duplicate === true) {
+                  GeneralFunctions.displayMessageBox('Duplicate Booking', response.message);
+                  return;
+                }   
+
                 window.location.href = GlobalVariables.baseUrl
                     + '/index.php/appointments/book_success/' + response.appointment_id;
             })

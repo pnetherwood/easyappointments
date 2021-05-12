@@ -177,7 +177,7 @@
                     <div class="frame-container">
 
                         <h3 class="frame-title"><?= lang('step_two_title') ?></h3>
-                        <p>If a date is not available it means that the session is full. Click back and try another session</p>
+                        <p>Change months to find next available date. If no date is available then all slots have been filled.</p>
                         <div class="frame-content row">
                             <div class="col-xs-12 col-sm-6">
                                 <div id="select-date"></div>
@@ -231,7 +231,6 @@
                             </div>
 
                             <div class="col-xs-12 col-sm-6">
-                                <!--
                                   <div class="form-group">
                                       <label for="address" class="control-label"><?= lang('address') ?></label>
                                       <input type="text" id="address" class="form-control" maxlength="120" />
@@ -244,7 +243,6 @@
                                       <label for="zip-code" class="control-label"><?= lang('zip_code') ?></label>
                                       <input type="text" id="zip-code" class="form-control" maxlength="120" />
                                   </div>
-                                !-->
                                   <div class="form-group">
                                       <label for="notes" class="control-label"><?= lang('notes') ?></label>
                                       <textarea id="notes" maxlength="500" class="form-control" rows="3"></textarea>

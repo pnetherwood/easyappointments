@@ -480,6 +480,19 @@ class Appointments extends CI_Controller {
             }
 
             $customer_id = $this->customers_model->add($customer);
+
+            // Check if customer is already booked in for that time period
+            if ( $this->appointments_model->get_customers_number_for_period($appointment['start_datetime'], $appointment['end_datetime'], $customer_id) > 0)
+            {
+                $this->output
+                    ->set_content_type('application/json')
+                    ->set_output(json_encode([
+                      'duplicate' => TRUE,
+                      'message' => 'There is already a booking for ' . $customer['first_name'] . ' ' . $customer['last_name'] . ' in that time slot. An email will have been sent to ' . $customer['email'] . ' which has a link to the booking. Check you inbox and/or junk folders.'
+                    ]));
+                return;
+            }
+
             $appointment['id_users_customer'] = $customer_id;
             $appointment['is_unavailable'] = (int)$appointment['is_unavailable']; // needs to be type casted
             $appointment['id'] = $this->appointments_model->add($appointment);
@@ -546,10 +559,17 @@ class Appointments extends CI_Controller {
                 if ($post_data['manage_mode'] == FALSE)
                 {
                     $customer_title = new Text($this->lang->line('appointment_booked'));
-                    $customer_message = new Text($this->lang->line('thank_you_for_appointment'));
                     $provider_title = new Text($this->lang->line('appointment_added_to_your_plan'));
                     $provider_message = new Text($this->lang->line('appointment_link_description'));
 
+                    if( isset($service['price']) && $service['price'] > 0)
+                    {
+                      $customer_message = new Text($this->lang->line('thank_you_for_appointment_payment'));
+                    }
+                    else
+                    {
+                      $customer_message = new Text($this->lang->line('thank_you_for_appointment'));
+                    } 
                 }
                 else
                 {
@@ -1121,7 +1141,8 @@ class Appointments extends CI_Controller {
 
         $unavailabilities = $this->appointments_model->get_batch([
             'is_unavailable' => TRUE,
-            'DATE(start_datetime)' => $selected_date,
+            'DATE(start_datetime) <=' => $selected_date,
+            'DATE(end_datetime) >=' => $selected_date,
             'id_users_provider' => $provider['id']
         ]);
 

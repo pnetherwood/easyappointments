@@ -15,7 +15,7 @@
             <h2>$email_title</h2>
             <p>$email_message</p>
 
-            <h2>Appointment Details</h2>
+            <h2>Booking Details</h2>
             <table id="appointment-details">
                 <tr>
                     <td class="label" style="padding: 3px;font-weight: bold;">Service</td>
@@ -32,6 +32,10 @@
                 <tr>
                     <td class="label" style="padding: 3px;font-weight: bold;">End</td>
                     <td style="padding: 3px;">$appointment_end_date</td>
+                </tr>
+                <tr>
+                    <td class="label" style="padding: 3px;font-weight: bold;">Price</td>
+                    <td style="padding: 3px;">$appointment_price</td>
                 </tr>
             </table>
 
@@ -53,6 +57,8 @@
 
             <h2>Appointment Link</h2>
             <a href="$appointment_link" style="width: 600px;">$appointment_link</a>
+
+            $bank_details
         </div>
 
         <div id="footer" style="padding: 10px; text-align: center; margin-top: 10px;

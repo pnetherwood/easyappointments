@@ -516,6 +516,36 @@ class Appointments_Model extends CI_Model {
     }
 
     /**
+     * Returns the number of bookings for this customer at the selected time.
+     *
+     * @param DateTime $slot_start When the slot starts
+     * @param DateTime $slot_end When the slot ends.
+     * @param int $customer_id Selected customer ID.
+     *
+     * @return int Returns the number of customers for selected time period.
+     */
+    public function get_customers_number_for_period($slot_start, $slot_end, $customer_id)
+    {
+        return (int)$this->db
+            ->select('count(*) AS customer_numbers')
+            ->from('ea_appointments')
+            ->group_start()
+            ->group_start()
+            ->where('start_datetime <=', $slot_start)
+            ->where('end_datetime >', $slot_start)
+            ->group_end()
+            ->or_group_start()
+            ->where('start_datetime <', $slot_end)
+            ->where('end_datetime >=', $slot_end)
+            ->group_end()
+            ->group_end()
+            ->where('id_users_customer', $customer_id)
+            ->get()
+            ->row()
+            ->customer_numbers;
+    }
+
+    /**
      * Get the aggregates of an appointment.
      *
      * @param array $appointment Appointment data.
